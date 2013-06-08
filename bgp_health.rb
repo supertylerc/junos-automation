@@ -20,13 +20,15 @@ File.open(Settings::FILES[:routers], 'r') {
 
     bgp = BGP.new(session)
     results = bgp.summary
-
-    File.open(Settings::FILES[:log], 'w') {
+    File.open(Settings::FILES[:log], 'a') {
       |f|
+      f.write("Router: #{rtr}")
+      f.write('========================')
       results.each {
         |peer|
         f.write(peer)
       }
+      f.write("\n\n")
     }
   end
 }

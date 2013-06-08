@@ -1,7 +1,7 @@
 ---
 files:
-  log                : rename_me.log
-  router_list        : router_input_file(rename_me).txt
+  log                : out.log
+  router_list        : rtrs.txt
 login:
   username : your_username_here
   password : your_password_here
