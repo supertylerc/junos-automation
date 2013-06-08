@@ -22,8 +22,8 @@ File.open(Settings::FILES[:routers], 'r') {
     results = bgp.summary
     File.open(Settings::FILES[:log], 'a') {
       |f|
-      f.write("Router: #{rtr}")
-      f.write('========================')
+      f.write("Router: #{rtr}\n")
+      f.write("========================\n")
       results.each {
         |peer|
         f.write(peer)
