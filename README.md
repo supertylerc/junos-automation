@@ -21,6 +21,42 @@ You can, of course, change the permissions so that you can just type `./bgp_heal
 
 Once you've run the script, open up the logfile (you specified it in the settings file) and view the output.  You'll see most of the relevant information that most people care about at-a-glance.
 
+# Sample Output #
+
+    
+    [tylerc@173 bgp-health]$ cat rtrs.txt
+    172.16.1.1
+    172.16.1.2
+    [tylerc@173 bgp-health]$ ./bgp_health.rb
+    [tylerc@173 bgp-health]$ cat out.log
+    Router: 172.16.1.1
+    ========================
+    Peer          :  10.1.3.3
+      AS          :  65555
+      Description :  r3
+      State       :  Established
+      Up Time     :  8:49
+      Table       :  inet.0
+        Received  :  0
+        Accepted  :  0
+        Rejected  :  0
+        Active    :  0
+    
+    
+    Router: 172.16.1.2
+    ========================
+    Peer          :  10.1.3.3
+      AS          :  65555
+      Description :  foo
+      State       :  Established
+      Up Time     :  4:19:06
+      Table       :  inet.0
+        Received  :  0
+        Accepted  :  0
+        Rejected  :  0
+        Active    :  0
+    
+
 # What Is This Not? #
 So you'll probably notice that there's something that this isn't: a troubleshooting tool.  This is a 'general status tool.'  Don't get mad if it doesn't display some sort of info you wanted for troubleshooting--if you're troubleshooting, you should probably be logged into the device anyway.  Or learn to code and write your own method to do whatever you want to do.  ;)
 
