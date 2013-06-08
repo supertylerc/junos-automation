@@ -12,8 +12,11 @@ To that end, I am working on a number of 'facts' (see Jeremy's documentation on 
 First, you need to edit the settings file.  Don't worry, though!  It's YAML, and even if you don't know what YAML is, it's ridiculously easy to edit.  Change four lines and you're ready to go!  It's self-explanatory, but you'll need to enter your username, password, a filename for output to be logged to, and a filename that will contain a list of routers.  I've included a file called 'rtrs.txt', so feel free to use that file and set the 'routers' filename to that in the settings file.
 
 Once you've done that, you can run the sample script I've included (`bgp_health.rb`).  Doing this is pretty easy--if you're using Linux or OS X (or any other Unix-derivative), just open a terminal, navigate to the directory where the file is, and type:
+
   `ruby bgp_health.rb`
+
 You can, of course, change the permissions so that you can just type `./bgp_health.rb`.  On Linux, OS X, or other Unix-derivates:
+
   `chmod 700 bgp_health.rb`
 
 Once you've run the script, open up the logfile (you specified it in the settings file) and view the output.  You'll see most of the relevant information that most people care about at-a-glance.
