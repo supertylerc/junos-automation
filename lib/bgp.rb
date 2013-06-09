@@ -14,6 +14,28 @@ class BGP
  
   Neighbor = Struct.new(:id, :as, :description, :state, :up, :tables)
 
+  def get_neighbor(ip)
+    Junos::Ez::Facts::Keeper.define(:bgp_neighbor) {
+      |session, facts|
+      neighbor_facts = ['peer-address', 'peer-as', 'description', 'local-as', 'local-address',
+                        'peer-state', 'bgp-option-information/bgp-options', 
+                        'bgp-option-information/holdtime', 'nlri-type-peer', 'nlri-type-session',
+                        'peer-id']
+      neighbor_info = session.rpc.get_bgp_neighbor_information
+      neighbors = neighbor_info.xpath('bgp-peer')
+      neighbors.each {
+        |neighbor|
+        next unless neighbor.xpath('peer-address').text =~ /#{ip}/
+        facts[:bgp_neighbor] = Hash[neighbor_facts.collect {
+          |element|
+          [element.gsub(/.*\//, '').tr('-','_').to_sym, neighbor.xpath(element).text]
+        }]
+      }
+    }
+    @session.facts.read!
+    return @session.facts[:bgp_neighbor]
+  end
+
   def summary
     peers_array = []
     @session.facts.read!
@@ -50,4 +72,18 @@ class BGP
     }
     return peers_array
   end 
+ 
+  def clear_neighbor(options)
+    if options[:soft] == 'in'
+      options[:soft] = 'soft-inbound'
+    elsif options[:soft] == 'out'
+      options[:soft] = 'soft'
+    else
+      options[:soft] = ''
+    end
+    if options[:instance]
+      options[:instance] = "instance #{options[:instance]}"
+    end
+    @session.rpc.command "clear bgp neighbor #{options[:ip]} #{options[:soft]} #{options[:instance]}"
+  end
 end
