@@ -1,5 +1,12 @@
 # JUN 2013 #
 
+0.2.1: 2013-06-09
+
+    Fourth release.
+    Added a new library--`ospf`.  Currently has one method:
+      `get_neighbor`.  Functions similar to the `bgp` method.
+    Added an example of the new `ospf` library/method.
+
 0.2  : 2013-06-08
 
     Third release.
