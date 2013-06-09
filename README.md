@@ -1,14 +1,26 @@
 # Installation #
+
 Clone me!  Alternatively, download the archive from:
   http://lab.label-switched.net/tylerc-auto-libs.zip
 Unzip it and you're done!
 
 # What Is This? #
+
 Jeremy Schulman (@nwkautomaniac on the Twitters) created a fantastic library that is easily extensible to fit your needs...if you're a programmer or have the time to invest in learning it.  Me?  I want to make it easy.  Not just for myself--for you, too!
 
-To that end, I am working on a number of 'facts' (see Jeremy's documentation on junos-ez-stdlib for more details!) and ways to exploit those facts.  The first one you'll see here is 'bgp'.  There's sample code here: just make sure you have Ruby installed (Google it--it's easy!) and Jeremy's gem installed ('gem install junos-ez-stdlib') and you should be on your way!  Once you have his gem installed and this repo either cloned or downloaded and unzipped, the fun begins.
+To that end, I am working on a number of 'facts' (see Jeremy's documentation on junos-ez-stdlib for more details!) and ways to exploit those facts.  I'm also writing custom libraries when fact exposition isn't adequate.  
+The first one you'll see here is 'bgp'.  It's a library, not a fact.  There's sample code here: just make sure you have Ruby installed (Google it--it's easy!) and Jeremy's gem installed ('gem install junos-ez-stdlib') and you should be on your way!  Once you have his gem installed and this repo either cloned or downloaded and unzipped, the fun begins.
 
 # Usage #
+
+Learn to program in Ruby and utilize the libraries!  It's very straightforward--see the section __Example__ below.  The library pretty much documents itself, and the gaps that it has are filled in by the included example.  You don't need to understand Jeremy's junos-ez library, but it certainly wouldn't hurt and will help you understand how to write your own extensions.
+
+# Example #
+
+I've included an example called `bgp_health.rb`.  This can be run on its own and produce usable output that may prove valuable, but it mainly serves as a reference point for how to use the BGP library.
+
+To use the example...
+
 First, you need to edit the settings file.  Don't worry, though!  It's YAML, and even if you don't know what YAML is, it's ridiculously easy to edit.  Change four lines and you're ready to go!  It's self-explanatory, but you'll need to enter your username, password, a filename for output to be logged to, and a filename that will contain a list of routers.  I've included a file called 'rtrs.txt', so feel free to use that file and set the 'routers' filename to that in the settings file.
 
 Once you've done that, you can run the sample script I've included (`bgp_health.rb`).  Doing this is pretty easy--if you're using Linux or OS X (or any other Unix-derivative), just open a terminal, navigate to the directory where the file is, and type:
@@ -61,7 +73,7 @@ Once you've run the script, open up the logfile (you specified it in the setting
 So you'll probably notice that there's something that this isn't: a troubleshooting tool.  This is a 'general status tool.'  Don't get mad if it doesn't display some sort of info you wanted for troubleshooting--if you're troubleshooting, you should probably be logged into the device anyway.  Or learn to code and write your own method to do whatever you want to do.  ;)
 
 # License #
-This is licensed under the BSD 2-Clause License.
+This is licensed under the BSD 2-Clause License.  See the LICENSE file for full details.
 
 # Author #
 Tyler Christiansen
