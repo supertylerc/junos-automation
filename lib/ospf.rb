@@ -39,6 +39,6 @@ class OSPF
   
   def is_up?(ip)
     state = @session.rpc.command "show ospf neighbor #{ip}"
-    state.xpath('ospf-neighbor').empty? ? (return false) : (return true)
+    state.xpath('ospf-neighbor').empty? ? false : true
   end
 end
