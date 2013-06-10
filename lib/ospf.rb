@@ -32,4 +32,13 @@ class OSPF
     @session.facts.read!
     return @session.facts[:ospf_neighbor]
   end
+  
+  def get_summary
+    
+  end
+  
+  def is_up?(ip)
+    state = @session.rpc.command "show ospf neighbor #{ip}"
+    state.xpath('ospf-neighbor').empty? ? return false : return true
+  end
 end

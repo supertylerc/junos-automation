@@ -86,4 +86,9 @@ class BGP
     end
     @session.rpc.command "clear bgp neighbor #{options[:ip]} #{options[:soft]} #{options[:instance]}"
   end
+  
+  def is_up?(ip)
+    neighbor = @session.rpc.command "show bgp neighbor #{ip}"
+    neighbor.xpath('bgp-peer').xpath('peer-state').text == 'Established' ? return true : return false
+  end
 end
