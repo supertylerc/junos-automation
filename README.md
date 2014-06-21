@@ -1,3 +1,7 @@
+# Deprecated #
+
+The Ruby library is not receiving as much love as the Python library.  As a result, this repository is no longer maintained.  It exists solely for historical purposes.
+
 # Installation #
 
 Clone me!  Alternatively, download the archive from:
